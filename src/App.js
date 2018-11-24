@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
-import Login from './components/Login';
+import { HashRouter, Route, Switch } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
 
 import logo from './logo.svg';
 import './App.css';
@@ -9,10 +9,19 @@ import './App.css';
 import Header from './components/Header';
 import Auth from './components/Auth';
 
+import Locations from './components/Locations';
+
+const history = createBrowserHistory();
+
 const Home = () => (
-  <div>
-    <Header />
-  </div>
+  <HashRouter history={history}>
+    <div className="content">
+      <Header />
+      <Switch>
+        <Route path="/locations" component={Locations} />
+      </Switch>
+    </div>
+  </HashRouter>
 );
 
 class App extends Component {

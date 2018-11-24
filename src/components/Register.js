@@ -30,7 +30,7 @@ class Register extends Component {
           <div>
             <label>Password</label>
           </div>
-          <input type="test" name="password" onChange={(e) => this.setState({ password: e.target.value })}/>
+          <input type="password" name="password" onChange={(e) => this.setState({ password: e.target.value })}/>
         </div>
         <div className="input-group">
           <div>

@@ -23,3 +23,7 @@ code {
   justify-content: center;
   align-items: center;
 }
+
+.content-container {
+  padding: 20px;
+}

@@ -25,7 +25,7 @@ class Login extends Component {
         </div>
         <div className="input-group">
           <label>Password</label>
-          <input type="test" name="password" onChange={(e) => this.setState({ password: e.target.value })}/>
+          <input type="password" name="password" onChange={(e) => this.setState({ password: e.target.value })}/>
         </div>
         <button className="btn btn-outline-success" onClick={this.onLogin}>Login</button>
         <button className="btn btn-small" onClick={this.props.onRegister}>Create an account</button>
