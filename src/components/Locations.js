@@ -11,7 +11,11 @@ class Locations extends Component {
     return (
       <div className="content-container">
         <h2>Locations</h2>
-        <LocationsList locations={this.props.locations.locations} items={this.props.locations.items} />
+        <LocationsList
+          locations={this.props.locations.locations}
+          items={this.props.locations.items}
+          addItem={this.props.addItem}
+        />
       </div>
     );
   }
@@ -25,6 +29,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = (dispatch) => ({
   fetchLocations: dispatch(actions.fetchLocations()),
   fetchItems: dispatch(actions.fetchItems()),
+  addItem: (itemInfo) => dispatch(actions.addItem(itemInfo)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Locations);

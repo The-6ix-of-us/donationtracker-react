@@ -21,7 +21,7 @@ const fetchLocations = () => (
         const locations = [];
 
         querySnapshot.forEach(doc => {
-          locations.push(doc.data());
+          locations.push(Object.assign({}, doc.data(), { id: doc.id }));
         });
 
         dispatch(fetchLocationsSuccess(locations));
@@ -63,9 +63,48 @@ const fetchItems = () => (
   }
 );
 
+const addItemRequest = () => ({
+  type: types.ADD_ITEM_REQUEST,
+});
+
+const addItemSuccess = () => ({
+  type: types.ADD_ITEM_SUCCESS,
+});
+
+const addItem = (info) => (
+  (dispatch) => {
+    dispatch(addItemRequest());
+
+    const item = firestore.collection('donation-item').doc();
+    const itemInfo = {
+      'Name': info.name,
+      'Category': info.category,
+      'Description': info.description,
+      'Description Full': info.descriptionFull,
+      'Value': info.value,
+      'Location ID': info.location,
+    };
+    item.set(itemInfo);
+
+    const locationReference = firestore.collection('location-data').doc(info.location)
+    locationReference.get().then(doc => {
+      const items = doc.data()['Items'];
+      console.log(item.id);
+      items.push(item.id);
+      locationReference.update({ 'Items': items })
+        .then(() => dispatch(addItemSuccess()))
+        .catch(error => ({
+          type: types.ADD_ITEM_FAILURE,
+          error,
+        }))
+    });
+  }
+)
+
 const actions = {
   fetchLocations,
   fetchItems,
+  addItem,
 };
 
 export default actions;
