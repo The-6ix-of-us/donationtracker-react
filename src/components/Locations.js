@@ -23,7 +23,6 @@ class Locations extends Component {
 
 const mapStateToProps = state => ({
   locations: state.locations,
-  items: state.items
 });
 
 const mapDispatchToProps = (dispatch) => ({

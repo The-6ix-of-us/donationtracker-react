@@ -9,8 +9,8 @@ import './App.css';
 import Header from './components/Header';
 import Auth from './components/Auth';
 
-import AddItem from './components/AddItem';
 import Locations from './components/Locations';
+import DonationItems from './components/DonationItems';
 
 const history = createBrowserHistory();
 
@@ -20,7 +20,7 @@ const Home = () => (
       <Header />
       <Switch>
         <Route path="/locations" component={Locations} />
-        <Route path="/add_item" component={AddItem} />
+        <Route path="/items" component={DonationItems} />
       </Switch>
     </div>
   </HashRouter>
