@@ -11,11 +11,21 @@ class Locations extends Component {
     return (
       <div className="content-container">
         <h2>Locations</h2>
-        <LocationsList
-          locations={this.props.locations.locations}
-          items={this.props.locations.items}
-          addItem={this.props.addItem}
-        />
+        <div className="row">
+          <div className="col-4">
+            <LocationsList
+              locations={this.props.locations.locations}
+              items={this.props.locations.items}
+              addItem={this.props.addItem}
+            />
+          </div>
+          <div className="col-8">
+            <LocationsMap
+              locations={this.props.locations.locations}
+              mapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7qDP0nGFZaA-rnvRT_hLdz4MgZGaILVE&v=3.exp&libraries=geometry,drawing,places"
+            />
+          </div>
+        </div>
       </div>
     );
   }
