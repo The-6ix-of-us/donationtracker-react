@@ -16,7 +16,6 @@ class Header extends Component {
               </li>
             </ul>
           </div>
-          <a className="nav-link" style={{float: 'right'}} href="/#/cart">My Cart</a>
         </nav>
       </div>
     )

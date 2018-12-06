@@ -19,6 +19,7 @@ const Home = () => (
     <div className="content">
       <Header />
       <Switch>
+        <Route exact path="/" component={Locations} />
         <Route path="/locations" component={Locations} />
         <Route path="/items" component={DonationItems} />
       </Switch>
